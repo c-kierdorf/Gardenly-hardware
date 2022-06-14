@@ -18,7 +18,7 @@ from Pump import *
 class Main:
 
     #Variablen initiieren
-    picoLed = PicoLedOn()                                             #schaltet Pico LED an. Kein weiterer Aufruf notwendig
+    picoLed = PicoLedOn()                                             
     tempHumidity = TempAndHumidity()
     liquidLevel = LiquidLevel()      
     wifi = WiFi() 
@@ -47,7 +47,6 @@ class Main:
         #######################
         i = 0
         while True:                                                    #infinity loop
-            #for i in range(3):                                              #three repetitions
             i += 1
             print("\r\n\r\n------------- Durchgang " + str(i) + "-------------")
             sleep_ms(int(self.httpResJson["transferIntervall"]) * 1000) #Automationseinstellung
@@ -63,9 +62,5 @@ class Main:
                 sleep_ms(2000)
                 self.pump.pumpOff()
                 self.wifi.waterNowFalse(self.httpResJson)
-        
-        self.picoLed.ledOff()
-        print("Ende")
-        
 
 Main()
